@@ -1,0 +1,54 @@
+<!-- internal_document_list.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Internal Documents</h1><a href="{% url 'add_internal_document' %}">
+  <button type="button" class="btn btn-primary" data-mdb-ripple-init>Add Internal Document </button>
+</a>
+  <table id="data" class="table table-striped">
+    <thead>
+      <tr>
+        <th>Company Name</th>
+        <th>Document Name</th>
+        <th>Description</th>
+        <th>Created On</th>
+        <th>Updated On</th>
+        <th>Edit Document</th>
+        <th>Preview Document</th>
+        <th>Download Document</th>
+        <th>Delete Document</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for internal_document in internal_documents %}
+        <tr>
+          <td>{{ internal_document.company_name }}</td>
+          <td>{{ internal_document.document_name }}</td>
+          <td>{{ internal_document.description }}</td>
+          <td>{{ internal_document.created_on }}</td>
+          <td>{{ internal_document.updated_on }}</td>
+          <td><a href="{% url 'edit_internal_document' internal_document.id %}">
+            <button type="button" class="btn btn-primary" data-mdb-ripple-init>Edit </button>
+          </a></td>
+          <td><a href="{% url 'preview_internal_document' internal_document.id %}">
+            <button type="button" class="btn btn-primary" data-mdb-ripple-init>Preview</button>
+          </a> </td>
+          <td><a href="{% url 'download_internal_document' internal_document.id %}">
+            <button type="button" class="btn btn-primary" data-mdb-ripple-init>Download</button>
+          </a></td>
+          <td><a href="{% url 'delete_internal_document' internal_document.id %}">
+            <button type="button" class="btn btn-primary" data-mdb-ripple-init>Delete </button>
+          </a></td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
+{% block scripts %}
+  <script>
+    $(document).ready(function () {
+      $('#data').DataTable();
+    });
+  </script>
+{% endblock %}
+

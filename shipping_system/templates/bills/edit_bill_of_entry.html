@@ -1,0 +1,39 @@
+<!-- edit_bill_of_entry.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Edit Bill of Entry</h1>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <label for="importer">Importer Name:</label>
+    <select name="importer" class="form-select" aria-label="Default select example>
+        {% for importer in importers %}
+            <option value="{{ importer.id }}" {% if importer.id == bill_of_entry.importer.id %}selected{% endif %}>{{ importer.name }}</option>
+        {% endfor %}
+    </select><br>
+
+    <div class="form-outline" data-mdb-input-init>
+        <input type="text" id="form12" class="form-control" name="entry_number" value="{{ bill_of_entry.entry_number }}"/>
+        <label class="form-label" for="form12">Bill of Entry Number</label>
+    </div>
+    
+    <div class="form-outline" data-mdb-input-init>
+        <input type="text" id="form12" class="form-control" name="invoice_reference" value="{{ bill_of_entry.invoice_reference }}"/>
+        <label class="form-label" for="form12">Invoice/Reference:</label>
+    </div>
+
+    <div class="form-outline" data-mdb-input-init>
+        <textarea class="form-control" id="description" rows="4" name="description" value="{{ bill_of_entry.description }}"></textarea>
+        <label class="form-label" for="description">Description</label>
+    </div>
+
+    
+
+
+    <label for="documents"  class="form-label">Attach Documents:</label>
+    <input type="file" name="documents" class="form-control" accept=".pdf, .png, .jpg"><br id="documents">
+    
+    
+    <button data-mdb-ripple-init type="submit" class="btn btn-primary btn-block mb-4" id="submit">Update Bill of Entry</button>
+</form>
+{% endblock %}

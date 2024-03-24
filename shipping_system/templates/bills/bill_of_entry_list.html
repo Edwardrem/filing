@@ -1,0 +1,67 @@
+<!-- bill_of_entry_list.html -->
+
+
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Bill of Entry List</h1><a href="{% url 'add_bill_of_entry' %}">
+  <button type="button" class="btn btn-primary" data-mdb-ripple-init>Add Bill of Entry</button>
+</a>
+  <table id="data" class="table table-striped">
+    <thead>
+      <tr>
+        <th>Importer Name</th>
+        <th>Entry Number</th>
+        <th>Invoice/Reference:</th>
+        <th>Description</th>
+        <th>Created On</th>
+        <th>Updated On</th>
+        <th>Edit Bill of Entry</th>
+        <th>Preview Document</th>
+        <th>Download Document</th>
+        <th>Delete Document</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for bill_of_entry in bills_of_entry %}
+        <tr>
+          <td>{{ bill_of_entry.importer.name }}</td>
+          <td>{{ bill_of_entry.entry_number }}</td>
+          <td>{{ bill_of_entry.invoice_reference }}</td>
+          <td>{{ bill_of_entry.description }}</td>
+          <td>{{ bill_of_entry.created_on }}</td>
+          <td>{{ bill_of_entry.updated_on }}</td>
+          <td><a href="{% url 'edit_bill_of_entry' bill_of_entry.id %}">
+            <button type="button" class="btn btn-primary" data-mdb-ripple-init>Edit</button>
+          </a> </td>
+          <td><a href="{% url 'preview_document' bill_of_entry.id %}">
+            <button type="button" class="btn btn-primary" data-mdb-ripple-init>Preview</button>
+          </a> </td>
+          <td><a href="{% url 'download_document' bill_of_entry.id %}">
+            <button type="button" class="btn btn-primary" data-mdb-ripple-init>Download</button>
+          </a></td>
+          <td><a href="{% url 'delete_bill_of_entry' bill_of_entry.id %}">
+            <button type="button" class="btn btn-primary" data-mdb-ripple-init>Delete</button>
+          </a></td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
+{% block scripts %}
+  <script>
+    $(document).ready(function () {
+      $('#data').DataTable();
+    });
+  </script>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+

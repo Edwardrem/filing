@@ -1,0 +1,30 @@
+<!-- add_user.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Add New User</h1>
+<form method="post">
+    {% csrf_token %}
+    <div class="form-outline" data-mdb-input-init>
+        <input type="text" id="form12" class="form-control" name="name" placeholder="Name"/>
+        <label class="form-label" for="form12">Name</label>
+      </div>
+    <div class="form-outline" data-mdb-input-init>
+        <input type="email" id="form12" class="form-control" name="email" placeholder="Email"/>
+        <label class="form-label" for="form12">Email</label>
+      </div>
+    <div class="form-outline" data-mdb-input-init>
+        <input type="password" id="form12" class="form-control" name="password" placeholder="Password"/>
+        <label class="form-label" for="form12">Password</label>
+      </div>
+     
+
+
+    <select name="role" class="form-select" aria-label="Default select example">>
+        <option value="Manager">Manager</option>
+        <option value="User">User</option>
+    </select><br>
+    
+    <button type="submit" class="btn btn-primary" data-mdb-ripple-init>Add User</button>
+</form>
+{% endblock %}

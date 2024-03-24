@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{% block title %}{% endblock %}</title>
+  <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+  {% load static %}
+  {% load bootstrap5 %}
+  {% bootstrap_css %}
+  {% bootstrap_javascript %}
+<Style>
+body {
+  background-color: #fbfbfb;
+}
+@media (min-width: 991.98px) {
+  main {
+    padding-left: 240px;
+  }
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  padding: 58px 0 0; /* Height of navbar */
+  box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%), 0 2px 10px 0 rgb(0 0 0 / 5%);
+  width: 240px;
+  z-index: 600;
+}
+
+@media (max-width: 991.98px) {
+  .sidebar {
+    width: 100%;
+  }
+}
+.sidebar .active {
+  border-radius: 5px;
+  box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
+}
+
+.sidebar-sticky {
+  position: relative;
+  top: 0;
+  height: calc(100vh - 48px);
+  padding-top: 0.5rem;
+  overflow-x: hidden;
+  overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+}
+</Style>
+
+</head>
+
+<body>
+<!-- Sidebar -->
+  <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
+    <div class="position-sticky">
+      <div class="list-group list-group-flush mx-3 mt-4">
+        <a
+          href="{% url 'home' %}"
+          class="list-group-item list-group-item-action py-2 ripple active"
+          aria-current="true"
+        >
+          <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Smart Filing</span>
+        </a>
+        <a href="{% url 'importer_list' %}" class="list-group-item list-group-item-action py-2 ripple">
+          <i class="fas fa-chart-area fa-fw me-3"></i><span>Importers</span>
+        </a>
+        <a href="{% url 'add_importer' %}" class="list-group-item list-group-item-action py-2 ripple"
+          ><i class="fas fa-lock fa-fw me-3"></i><span>Add Importer</span></a
+        >
+        <a href="{% url 'bill_of_entry_list' %}" class="list-group-item list-group-item-action py-2 ripple"
+          ><i class="fas fa-chart-line fa-fw me-3"></i><span>Bill of Entries</span></a
+        >
+        <a href="{% url 'add_bill_of_entry' %}" class="list-group-item list-group-item-action py-2 ripple">
+          <i class="fas fa-chart-pie fa-fw me-3"></i><span>Add Bill Of Entry</span>
+        </a>
+        <a href="{% url 'internal_document_list' %}" class="list-group-item list-group-item-action py-2 ripple"
+          ><i class="fas fa-chart-bar fa-fw me-3"></i><span>Documents</span></a
+        >
+        <a href="{% url 'add_internal_document' %}" class="list-group-item list-group-item-action py-2 ripple"
+          ><i class="fas fa-globe fa-fw me-3"></i><span>Add Document</span></a
+        >
+        <a href="{% url 'user_list' %}" class="list-group-item list-group-item-action py-2 ripple"
+          ><i class="fas fa-building fa-fw me-3"></i><span>Users</span></a
+        >
+        <a href="{% url 'add_user' %}" class="list-group-item list-group-item-action py-2 ripple"
+          ><i class="fas fa-calendar fa-fw me-3"></i><span>Add User</span></a
+        >
+        <a href="{% url 'my_account' %}" class="list-group-item list-group-item-action py-2 ripple"
+          ><i class="fas fa-users fa-fw me-3"></i><span>My Account</span></a
+        >
+        <a href="{% url 'logout' %}" class="list-group-item list-group-item-action py-2 ripple active"
+          ><i class="fas fa-money-bill fa-fw me-3"></i><span>Logout</span></a
+        >
+      </div>
+    </div>
+  </nav>
+  <!-- Sidebar -->
+<main style="margin-top: 58px;"> 
+ <div class="content pt-4"></div>
+    <div class="container">
+        <h1>{{ title }}</h1>
+        <hr>
+        {% block content %}{% endblock %}
+      </div>
+</div>
+
+<!-- Footer -->
+<footer class="text-center text-lg-start bg-body-tertiary text-muted">
+  <!-- Section: Social media -->
+  <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+    <!-- Left -->
+
+    <!-- Right -->
+  </section>
+  <!-- Section: Social media -->
+
+  <!-- Section: Links  -->
+  <section class="">
+    <div class="container text-center text-md-start mt-5">
+      <!-- Grid row -->
+      <div class="row mt-3">
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+          <!-- Content -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            <i class="fas fa-gem me-3"></i>PRINCE SHIPPING
+          </h6>
+          <p>
+            Prince Shipping was founded in 1997 with the goal of providing Zimbabwean businesses with efficient and reliable shipping solutions. The company has grown steadily over the years and now has a team of over 100 experienced and qualified staff. Prince Shipping offers a wide range of services, including customs clearance, transport and logistics, consolidating and warehousing, rebates, import licenses and permits application, and tax clearance and company registration.
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            OUR SERVICES
+          </h6>
+          <p>
+            <a href="https://princeshipping.co.zw/services/" class="text-reset">Customs Clearing</a>
+          </p>
+          <p>
+            <a href="https://princeshipping.co.zw/services/" class="text-reset">Transport & Logistics</a>
+          </p>
+          <p>
+            <a href="https://princeshipping.co.zw/services/" class="text-reset">Consolidating & Warehousing</a>
+          </p>
+          <p>
+            <a href="https://princeshipping.co.zw/services/" class="text-reset">Rebates</a>
+          </p>
+          <p>
+            <a href="https://princeshipping.co.zw/services/" class="text-reset">Import Licenses & Permit Applications</a>
+          </p>
+          <p>
+            <a href="https://princeshipping.co.zw/services/" class="text-reset">Tax Clearance & Company Registration</a>
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            Useful links
+          </h6>
+          <p>
+            <a href="https://princeshipping.co.zw/" class="text-reset">Our Website</a>
+          </p>
+          <p>
+            <a href="https://princeshipping.co.zw/news/" class="text-reset">Blog</a>
+          </p>
+          <p>
+            <a href="https://princeshipping.co.zw/faq/" class="text-reset">Frequent Asked Questions</a>
+          </p>
+          <p>
+            <a href="https://princeshipping.co.zw/about-us/" class="text-reset">About Us</a>
+          </p>
+          <p>
+            <a href="https://www.facebook.com/profile.php?id=61554736012533" class="text-reset">Facebook</a>
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+          <p><i class="fas fa-home me-3"></i> Office 322, Anably House, N Mandela / Angwa, Harare Zimbabwe</p>
+          <p>
+            <i class="fas fa-envelope me-3"></i>
+            operations@princeshipping.co.zw
+          </p>
+          <p><i class="fas fa-phone me-3"></i> 0772443677</p>
+          <p><i class="fas fa-print me-3"></i> 0719999922</p>
+        </div>
+        <!-- Grid column -->
+      </div>
+      <!-- Grid row -->
+    </div>
+  </section>
+  <!-- Section: Links  -->
+
+  <!-- Copyright -->
+  <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+    © Copyright: All Rights Reserved , System Developed by 
+    <a class="text-reset fw-bold" href="https://www.linkedin.com/in/rufaro-mutepfa-0a64b810a/">Edwardrem</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+<!-- Footer -->
+</main>
+
+<!-- Load jQuery -->
+<script src="{% static 'assets/scripts/jquery.js' %}"></script>
+
+<!-- Load DataTables -->
+<script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>s
+<script src="{% static 'assets/scripts/datatables.js' %}"></script>
+<script src="{% static 'assets/scripts/datatables_bootstrap.js' %}"></script>
+{% block scripts %}{% endblock %}
+</body>
+</html>

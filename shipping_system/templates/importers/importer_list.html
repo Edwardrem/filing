@@ -1,0 +1,46 @@
+<!-- importer_list.html -->
+
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Importer List</h1>
+<a href="{% url 'add_importer' %}">
+  <button type="button" class="btn btn-primary" data-mdb-ripple-init>Add Importer</button>
+</a>
+
+  <table id="data" class="table table-striped">
+    <thead>
+      <tr>
+        <th>Importer Name</th>
+        <th>Created On</th>
+        <th>Updated On</th>
+        <th>Edit Impoter</th>
+        <th>Delete Importer</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for importer in importers %}
+        <tr>
+          <td>{{ importer.name }}</td>
+          <td>{{ importer.created_on }}</td>
+          <td>{{ importer.updated_on }}</td>
+          <td><a href="{% url 'edit_importer' importer.id %}">
+            <button type="button" class="btn btn-primary" data-mdb-ripple-init>Edit</button>
+          </a> </td>
+          <td><a href="{% url 'delete_importer' importer.id %}">
+            <button type="button" class="btn btn-primary" data-mdb-ripple-init>Delete</button>
+          </a></td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
+{% block scripts %}
+  <script>
+    $(document).ready(function () {
+      $('#data').DataTable();
+    });
+  </script>
+{% endblock %}
+
+

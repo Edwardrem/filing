@@ -16,15 +16,13 @@ def create_superuser(request):
     email = 'rufaromutepfa@gmail.com'
     password = 'Remail2019'
 
-    # Check if a user with the same email already exists
     if User.objects.filter(email=email).exists():
-        return "User already exists"
+        return HttpResponse("User already exists", status=400)
 
-    # Create a new superuser
     user = User.objects.create_superuser(username, email, password)
     user.save()
 
-    return "Superuser created successfully"
+    return HttpResponse("Superuser created successfully")
 
 
 #Login Views

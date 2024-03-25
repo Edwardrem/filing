@@ -1,0 +1,1 @@
+web: gunicorn prince_shipping_system.wsgi

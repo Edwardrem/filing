@@ -1,1 +1,1 @@
-web: gunicorn prince_shipping_system.wsgi
+web: gunicorn prince_shipping_system.wsgi:application
